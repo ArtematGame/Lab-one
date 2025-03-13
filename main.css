@@ -1,0 +1,26 @@
+body {
+    background-color: lavender;
+    color: brown;
+    font-family: Arial;
+    margin: opx;
+}
+main {
+    background-color: honeydew;
+    color: brown;
+    font-family: Arial;
+    margin: 0px;
+}
+footer{
+    background-color: greenyellow;
+    color: black;
+    font-family: Arial;
+    margin: opx;
+    font-size: 16px;
+}
+header{
+    background-color: greenyellow;
+    color: black;
+    font-family: Arial;
+    margin: opx;
+    font-size: 16px;
+}
