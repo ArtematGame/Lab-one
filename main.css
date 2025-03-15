@@ -24,3 +24,27 @@ header{
     margin: opx;
     font-size: 16px;
 }
+a {
+   color: rgb(0, 81, 255);
+   text-decoration: none;
+   transition: 0.5s;
+}
+a:hover {
+    color: rgb(105, 0, 0);
+    text-decoration: underline;
+    background: rgb(250, 221, 221);
+    text-shadow: 5px 5px 10px;
+}
+a:active {
+    color: #1a7000b4;
+    opacity: 0.3;
+}
+a:link {
+    color: rgb(31, 0, 204);
+    opacity: 0,3;
+}
+a:visited {
+    color: rgb(0, 119, 26);
+    opacity: 0.5;
+
+}
