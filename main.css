@@ -49,3 +49,15 @@ a:visited {
     opacity: 0.5;
 
 }
+div.menu{
+    border: 6px solid rgb(250, 128, 114);
+    border-radius: 5px;
+    width: 300px;
+    margin: 0 auto;
+    background: rgb(255, 255, 255);
+    box-shadow: 0 0 10px black;
+}
+div.menu:hover{
+    background-color: rgba(243, 242, 183, 0.322);
+    box-shadow: 0 0 15px black;
+}
