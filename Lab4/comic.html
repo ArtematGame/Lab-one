@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="ru">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Шельмин Артём Евгеньевич. Лабораторная работа 4</title>
+        <link rel="stylesheet" href="../main.css">
+        <link rel="shortcut" href="../favicon.ico" type="image/x-icon">
+        <link rel="icon" href="../favicon-32x32.png">
+        <link rel="icon" href="../favicon-48x48.png">
+        <style>
+            body {
+                text-align: center;
+            }
+            .div {
+                position: relative;
+                display: inline-block;
+                top: 50px;
+            }
+            .photo {
+                margin: auto;
+                border: 7px solid green;
+            }
+            .obl {
+                border: 2px dotted rgb(209, 118, 0);
+                border-radius: 40px;
+                background-color: rgb(255, 255, 255);
+                color: black;
+                position: absolute;
+                box-shadow: 2px 2px 3px gray;
+                opacity: 0;
+                transition: 2s;
+            }
+            .obl1 {
+                left: 450px;
+                top: 300px;
+                width: 50px;
+                height: 40px;
+            }
+            .obl2 {
+                left: 500px;
+                top: 260px;
+                width: 80px;
+                height: 60px;
+            }
+            .obl3 {
+                left: 580px;
+                top: 210px;
+                width: 110px;
+                height: 80px;
+            }
+            .obl4 {
+                line-height: 100px;
+                text-align: center;
+                color: black;
+                font-family: Arial;
+                font-size: 20px;
+                left: 690px;
+                top: 140px;
+                width: 150px;
+                height: 105px;
+            }
+            .div:hover .obl {
+                opacity: 1;
+            }
+            .div:hover .obl1 {
+                transition: 2s;
+                transition-delay: 0.1s;
+            }
+            .div:hover .obl2 {
+                transition: 2s;
+                transition-delay: 0.2s;
+            }
+            .div:hover .obl3 {
+                transition: 2s;
+                transition-delay: 0.3s;
+            }
+            .div:hover .obl4 {
+                transition: 2s;
+                transition-delay: 0.4s;
+            }
+        </style>
+    </head>
+    <body>
+        <header>
+            НГТУ, ФБ, Лабораторная 4 
+            <hr>   
+        </header>
+        <main>
+            <div class="div">
+                <img src="office.jpeg" class="photo">
+                <div class="obl obl1"></div>
+                <div class="obl obl2"></div>
+                <div class="obl obl3"></div>
+                <div class="obl obl4">What?...</div>
+            </div>
+        </main>
+        
+        <footer>
+            <hr>
+            &copy; Шельмин Артём, ФБИ-31, 2 курс, 2025 
+        </footer>
+    </body>
+</html>
