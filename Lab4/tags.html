@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="ru">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Шельмин Артём Евгеньевич. Лабораторная работа 4</title>
+        <link rel="stylesheet" href="../main.css">
+        <link rel="shortcut" href="../favicon.ico" type="image/x-icon">
+        <link rel="icon" href="../favicon-32x32.png">
+        <link rel="icon" href="../favicon-48x48.png">
+        <style>
+            .callbacks{
+                color: blue;
+                font-size: 55px;
+                top: 20%;
+                left: 10%;
+                transform: rotate(-20deg);
+                position: absolute;
+                transition: 0,5s;
+                animation: float 3s infinite ease-in-out;
+            }
+            .callbacks:hover{
+                font-size: 60px;
+                text-shadow: 5px 5px 10px black;
+                transition: 0,5s;
+                z-index: 1;
+                animation-play-state: paused;
+            }
+            .promises{
+                color: darkgreen;
+                font-size: 50px;
+                top: 10%;
+                left: 40%;
+                transform: rotate(15deg);
+                animation: float 4s infinite ease-in-out;
+                position: absolute;
+            }
+            .promises:hover{
+                font-size: 55px;
+                text-shadow: 5px 5px 10px black;
+                z-index: 1; 
+                animation-play-state: paused;
+            }
+            .async{
+                color: red;
+                font-size: 45px;
+                top: 60%;
+                left: 20%;
+                transform: rotate(-10deg);
+                animation: float 5s infinite ease-in-out;
+                position: absolute; 
+            }
+            .async:hover{
+                font-size: 50px;
+                text-shadow: 5px 5px 10px black;
+                z-index: 1; 
+                animation-play-state: paused;
+            }
+            .await{
+                color: purple;
+                font-size: 52px;
+                top: 30%;
+                left: 70%;
+                transform: rotate(20deg);
+                animation: float 3.5s infinite ease-in-out;
+                position: absolute;
+            }
+            .await:hover{
+                font-size: 57px;
+                text-shadow: 5px 5px 10px black;
+                z-index: 1; 
+                animation-play-state: paused;
+            }
+            .fetch{
+                color: orange;
+                font-size: 48px;
+                top: 50%;
+                left: 10%;
+                transform: rotate(-30deg);
+                animation: float 6s infinite ease-in-out;
+                position: absolute;
+            }
+            .fetch:hover{
+                font-size: 53px;
+                text-shadow: 5px 5px 10px black;
+                z-index: 1; 
+                animation-play-state: paused;
+            }
+            .axios{
+                color: teal;
+                font-size: 46px;
+                top: 70%;
+                left: 40%;
+                transform: rotate(5deg);
+                animation: float 4.5s infinite ease-in-out;
+                position: absolute;
+            }
+            .axios:hover{
+                font-size: 51px;
+                text-shadow: 5px 5px 10px black;
+                z-index: 1; 
+                animation-play-state: paused;
+            }
+            .then{
+                color: pink;
+                font-size: 54px;
+                top: 15%;
+                left: 80%;
+                transform: rotate(-5deg);
+                animation: float 5.5s infinite ease-in-out;
+                position: absolute;
+            }
+            .then:hover{
+                font-size: 59px;
+                text-shadow: 5px 5px 10px black;
+                z-index: 1; 
+                animation-play-state: paused;
+            }
+            .catch{
+                color: darkblue;
+                font-size: 49px;
+                top: 65%;
+                left: 30%;
+                transform: rotate(25deg);
+                animation: float 7s infinite ease-in-out;
+                position: absolute;
+            }
+            .catch:hover{
+                font-size: 54px;
+                text-shadow: 5px 5px 10px black;
+                z-index: 1; 
+                animation-play-state: paused;
+            }
+            .finally{
+                color: brown;
+                font-size: 51px;
+                top: 35%;
+                left: 50%;
+                transform: rotate(10deg);
+                animation: float 8s infinite ease-in-out;
+                position: absolute;
+            }
+            .finally:hover{
+                font-size: 56px;
+                text-shadow: 5px 5px 10px black;
+                z-index: 1; 
+                animation-play-state: paused;
+            }
+            .setTimeout{
+                color: olive;
+                font-size: 47px;
+                top: 25%;
+                left: 20%;
+                transform: rotate(30deg);
+                animation: float 9s infinite ease-in-out;
+                position: absolute;
+            }
+            .setTimeout:hover{
+                font-size: 52px;
+                text-shadow: 5px 5px 10px black;
+                z-index: 1; 
+                animation-play-state: paused;
+            }
+            .setInterval{
+                color: darkorange;
+                font-size: 42px;
+                top: 50%;
+                left: 80%;
+                transform: rotate(-15deg);
+                animation: float 3.8s infinite ease-in-out;
+                position: absolute;
+            }
+            .setInterval:hover{
+                font-size: 47px;
+                text-shadow: 5px 5px 10px black;
+                z-index: 1; 
+                animation-play-state: paused;
+            }
+            .EventLoop{
+                color: navy;
+                font-size: 44px;
+                top: 40%;
+                left: 10%;
+                transform: rotate(-25deg);
+                animation: float 6.5s infinite ease-in-out;
+                position: absolute;
+            }
+            .EventLoop:hover{
+                font-size: 49px;
+                text-shadow: 5px 5px 10px black;
+                z-index: 1; 
+                animation-play-state: paused;
+            }
+            .WebAPI{
+                color: crimson;
+                font-size: 50px;
+                top: 20%;
+                left: 60%;
+                transform: rotate(35deg);
+                animation: float 9.5s infinite ease-in-out;
+                position: absolute;
+            }
+            .WebAPI:hover{
+                font-size: 55px;
+                text-shadow: 5px 5px 10px black;
+                z-index: 1; 
+                animation-play-state: paused;
+            }
+            .asynciterators{
+                color: darkcyan;
+                font-size: 46px;
+                top: 70%;
+                left: 30%;
+                transform: rotate(0deg);
+                animation: float 8s infinite ease-in-out;
+                position: absolute;
+            }
+            .asynciterators:hover{
+                font-size: 51px;
+                text-shadow: 5px 5px 10px black;
+                z-index: 1; 
+                animation-play-state: paused;
+            }
+            .generator{
+                color: olive;
+                font-size: 43px;
+                top: 45%;
+                left: 75%;
+                transform: rotate(10deg);
+                animation: float 7.5s infinite ease-in-out;
+                position: absolute;
+            }
+            .generator:hover{
+                font-size: 48px;
+                text-shadow: 5px 5px 10px black;
+                z-index: 1; 
+                animation-play-state: paused;
+            }
+            @keyframes float {
+                0% {
+                    transition: translate(0, 0);
+                }
+                25% {
+                    transform: translate(120px, -20px);
+                }
+                50% {
+                    transform: translate(-20px, 120px);
+                }
+                75% {
+                    transform: translate(50px, -10px);
+                }
+                100% {
+                    transform: translate(0, 0);
+                }
+            }
+
+        </style>
+    </head>
+    <body>
+        <header>
+            НГТУ, ФБ, Лабораторная 4 
+            <hr>   
+        </header>
+
+        <main>
+            <div class="callbacks">callbacks</div>
+            <div class="promises">promises</div>
+            <div class="async">async</div>
+            <div class="await">await</div>
+            <div class="fetch">fetch</div>
+            <div class="axios">axios</div>
+            <div class="then">then</div>
+            <div class="catch">catch</div>
+            <div class="finally">finally</div>
+            <div class="setTimeout">setTimeout</div>
+            <div class="setInterval">setInterval</div>
+            <div class="EventLoop">EventLoop</div>
+            <div class="WebAPI">WebAPI</div>
+            <div class="asynciterators">asynciterators</div>
+            <div class="generator">generator</div>
+        </main>
+        
+        <footer>
+            <hr>
+            &copy; Шельмин Артём, ФБИ-31, 2 курс, 2025 
+        </footer>
+    </body>
+</html>
