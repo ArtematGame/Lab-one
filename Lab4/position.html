@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Шельмин Артём Евгеньевич. Лабораторная работа 4</title>
+    <link rel="stylesheet" href="../main.css">
+    <link rel="shortcut" href="../favicon.ico" type="image/x-icon">
+    <link rel="icon" href="../favicon-32x32.png">
+    <link rel="icon" href="../favicon-48x48.png">
+    <style>
+        div{
+            width: 300px;
+            height: 70px;
+            background-color: white;
+            border: 1px solid darkgreen;
+            margin: 15px;
+            text-align: center;
+            line-height: 70px;
+            z-index: 1;
+            position: relative;
+        }
+        .position-relative{
+            position: relative;
+            left: 130px;
+            top: -130px;
+            z-index: 0;
+        }
+        .position-relative:hover{
+            z-index: 2;
+            background-color: hsl(160, 100%, 50%);
+            box-shadow: 5px 5px 10px black;
+        }
+        .position-absolute {
+            position: absolute;
+            left: 300px;
+        }
+        .position-absolute:hover {
+            width: 310px;
+            height: 80px;
+            background-color: hsl(160, 100%, 50%);
+            box-shadow: 5px 5px 10px black;
+        }
+    </style>
+    </head>
+    <body>
+        <header>
+            НГТУ, ФБ, Лабораторная 4 
+            <hr>   
+        </header>
+        <main>
+           <div>static</div>
+           <div>static</div>
+           <div class="position-relative">relative</div>
+           <div>static</div>
+           <div>static</div>
+           <div class="position-absolute">absolute</div>
+           <div>static</div>
+           <div>static</div>
+           <div>static</div>
+           <div>static</div>
+        </main>
+        
+        <footer>
+            <hr>
+            &copy; Шельмин Артём, ФБИ-31, 2 курс, 2025 
+        </footer>
+    </body>
+</html>
