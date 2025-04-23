@@ -26,7 +26,7 @@
                 let a = parseInt(inputA.value);
                 let b = parseInt(inputB.value);
                 let result = a - b;
-                alert('Сумма ' + a + ' и ' + b + ' равна ' + result);    
+                alert('Разность ' + a + ' и ' + b + ' равна ' + result);    
             }
             function showMultiplication(){
                 let inputA=document.getElementById('numberA');
@@ -35,6 +35,15 @@
                 let a = parseInt(inputA.value);
                 let b = parseInt(inputB.value);
                 let result = a * b;
+                alert('Произведение ' + a + ' и ' + b + ' равна ' + result);    
+            }
+            function showDiv(){
+                let inputA=document.getElementById('numberA');
+                let inputB=document.getElementById('numberB');
+
+                let a = parseInt(inputA.value);
+                let b = parseInt(inputB.value);
+                let result = a / b;
                 alert('Сумма ' + a + ' и ' + b + ' равна ' + result);    
             }
             function showAuthor(){
@@ -71,6 +80,7 @@
             <div class="message" onclick="showSum()">Найти сумму чисел</div>
             <div class="message" onclick="showDifference()">Найти разность чисел</div>
             <div class="message" onclick="showMultiplication()">Найти произведение чисел</div>
+            <div class="message" onclick="showDiv()">Найти отношение чисел</div>
             <div class="message" onclick="showAuthor()">Узнать кто автор страницы</div>
         </main>
         
