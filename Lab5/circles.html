@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="ru">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Шельмин Артём Евгеньевич. Лабораторная работа 4</title>
+        <link rel="stylesheet" href="../main.css">
+        <link rel="shortcut" href="../favicon.ico" type="image/x-icon">
+        <link rel="icon" href="../favicon-32x32.png">
+        <link rel="icon" href="../favicon-48x48.png">
+        <script>
+            function show(circleId, opacity, height, width, transition) {
+                let circle = document.getElementById(circleId); 
+                circle.style.opacity = opacity;
+                circle.style.height = height;
+                circle.style.width = width;
+                circle.style.transition = transition;
+            }
+            function Return() {
+                let circle = document.getElementById('circle1');
+                circle.style.opacity = '1';
+                circle.style.height = '70px';
+                circle.style.width = '70px';
+                circle.style.transition = 'all 1s ease';
+
+                let circle1 = document.getElementById('circle2');
+                circle1.style.opacity = '1';
+                circle1.style.height = '70px';
+                circle1.style.width = '70px';
+                circle1.style.transition = 'all 1s ease';
+
+                let circle2 = document.getElementById('circle3');
+                circle2.style.opacity = '1';
+                circle2.style.height = '70px';
+                circle2.style.width = '70px';
+                circle2.style.transition = 'all 1s ease';
+
+                let circle3 = document.getElementById('circle4');
+                circle3.style.opacity = '1';
+                circle3.style.height = '70px';
+                circle3.style.width = '70px';
+                circle3.style.transition = 'all 1s ease';
+
+                let circle4 = document.getElementById('circle5');
+                circle4.style.opacity = '1';
+                circle4.style.height = '70px';
+                circle4.style.width = '70px';
+                circle4.style.transition = 'all 1s ease';
+
+                let circle5 = document.getElementById('circle6');
+                circle5.style.opacity = '1';
+                circle5.style.height = '70px';
+                circle5.style.width = '70px';
+                circle5.style.transition = 'all 1s ease';
+
+                let circle6 = document.getElementById('circle7');
+                circle6.style.opacity = '1';
+                circle6.style.height = '70px';
+                circle6.style.width = '70px';
+                circle6.style.transition = 'all 1s ease';
+
+                let circle7 = document.getElementById('circle8');
+                circle7.style.opacity = '1';
+                circle7.style.height = '70px';
+                circle7.style.width = '70px';
+                circle7.style.transition = 'all 1s ease';
+
+                let circle8 = document.getElementById('circle9');
+                circle8.style.opacity = '1';
+                circle8.style.height = '70px';
+                circle8.style.width = '70px';
+                circle8.style.transition = 'all 1s ease';
+
+                let circle9 = document.getElementById('circle10');
+                circle9.style.opacity = '1';
+                circle9.style.height = '70px';
+                circle9.style.width = '70px';
+                circle9.style.transition = 'all 1s ease';
+            }
+        </script>
+        <style>
+            .circle {
+            position: absolute;
+            height: 70px;
+            width: 70px;
+            line-height: 70px;
+            text-align: center;
+            border: 2px double;
+            border-radius: 50px;
+            box-shadow: 5px 5px 4px lightgray;
+            font-size: 30px;
+            }
+            #circle1 {
+                top: 300px;
+                left: 900px;
+                background-color:  rgb(255, 192, 203);
+            }
+            #circle2 {
+                top: 500px;
+                left: 900px;
+                background-color: rgb(173, 216, 230);
+            }
+            #circle3 {
+                top: 400px;
+                left: 500px;
+                background-color: rgb(255, 218, 185);
+            }
+            #circle4 {
+                top: 400px;
+                left: 1300px;
+                background-color: rgb(255, 255, 191);
+            }
+            #circle5 {
+                top: 150px;
+                left: 900px;
+                background-color: rgb(204, 255, 204);
+            }
+            #circle6 {
+                top: 650px;
+                left: 900px;
+                background-color: rgb(230, 230, 250);
+            }
+            #circle7 {
+                top: 150px;
+                left: 650px;
+                background-color: rgb(192, 192, 192);
+            }
+            #circle8 {
+                top: 650px;
+                left: 1150px;
+                background-color: rgb(245, 245, 220);
+            }
+            #circle9 {
+                top: 150px;
+                left: 1150px;
+                background-color: rgb(230, 230, 250);
+            }
+            #circle10 {
+                top: 650px;
+                left: 650px;
+                background-color: rgb(255, 250, 250);
+            }
+            .Button{
+                position: absolute;
+                top: 800px;
+                left: 830px;
+            }
+        </style>
+    </head>
+    <body>
+        <header>
+            НГТУ, ФБ, Лабораторная 4 
+            <hr>   
+        </header>
+        <main>
+            <div>
+                <div class="circle" id="circle1" onclick="show('circle1', '0', '0px', '0px', '1s')">1</div>
+                <div class="circle" id="circle2" onclick="show('circle2', '0', '0px', '0px', '1s')">2</div>
+                <div class="circle" id="circle3" onclick="show('circle3', '0', '0px', '0px', '1s')">3</div>
+                <div class="circle" id="circle4" onclick="show('circle4', '0', '0px', '0px', '1s')">4</div>
+                <div class="circle" id="circle5" onclick="show('circle5', '0', '0px', '0px', '1s')">5</div>
+                <div class="circle" id="circle6" onclick="show('circle6', '0', '0px', '0px', '1s')">6</div>
+                <div class="circle" id="circle7" onclick="show('circle7', '0', '0px', '0px', '1s')">7</div>
+                <div class="circle" id="circle8" onclick="show('circle8', '0', '0px', '0px', '1s')">8</div>
+                <div class="circle" id="circle9" onclick="show('circle9', '0', '0px', '0px', '1s')">9</div>
+                <div class="circle" id="circle10" onclick="show('circle10', '0', '0px', '0px', '1s')">10</div>
+                <input class="Button" type="button" value="Вернуть всё в исходное состояние" onclick="Return()">
+            </div>
+        </main>
+        
+        <footer>
+            <hr>
+            &copy; Шельмин Артём, ФБИ-31, 2 курс, 2025 
+        </footer>
+    </body>
+</html>
