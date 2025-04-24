@@ -15,17 +15,20 @@
                 let input2 = document.getElementById('number2');
                 let input3 = document.getElementById('number3');
                 let input4 = document.getElementById('number4');
+                let input5 = document.getElementById('number5');
                 let output = document.getElementById('output');
 
                 let apples = parseInt(input1.value);
                 let mangoes = parseInt(input2.value);
                 let oranges = parseInt(input3.value);
                 let pineapples = parseInt(input4.value);
+                let peachs = parseInt(input5.value);
 
                 let x = 60;
                 let y = 45;
                 let z = 130;
                 let f = 280;
+                let g = 120
 
                 if (apples < 0) {
                     alert("Количество не может быть меньше 0");
@@ -40,6 +43,10 @@
                     return;
                 }
                 if (pineapples < 0) {
+                    alert("Количество не может быть меньше 0");
+                    return;
+                }
+                if (peachs < 0) {
                     alert("Количество не может быть меньше 0");
                     return;
                 }
@@ -67,8 +74,13 @@
                     input4.style.borderColor = 'red';
                     return;
                 }
+                if (isNaN(peachs)) {
+                    alert("Введите количество персиков");
+                    input4.style.borderColor = 'red';
+                    return;
+                }
                 
-                let sum = apples * x + mangoes * y + oranges * z + pineapples * f;
+                let sum = apples * x + mangoes * y + oranges * z + pineapples * f + peachs * g;
                 output.innerHTML = 'Общая сумма: ' + sum;
             }
             function clearCart() {
@@ -76,6 +88,7 @@
                 document.getElementById("number2").value = "";
                 document.getElementById("number3").value = "";
                 document.getElementById("number4").value = "";
+                document.getElementById("number5").value = "";
                 document.getElementById("output").textContent = 'Общая цена:';
             }
         </script>
@@ -101,7 +114,7 @@
     </head>
     <body>
         <header>
-            НГТУ, ФБ, Лабораторная 4 
+            НГТУ, ФБ, Лабораторная 5 
             <hr>   
         </header>
         <main style="text-align: center">
@@ -125,6 +138,10 @@
                 <div class="product">
                     Ананасы (280р/шт):<br>
                     <input type="number" min="0" value="" placeholder="Сколько ананасов вам нужно?" id="number4"><br>
+                </div>
+                <div class="product">
+                    Персики (120р/шт):<br>
+                    <input type="number" min="0" value="" placeholder="Сколько персиков вам нужно?" id="number5"><br>
                 </div>
     
                 <input type="button" value="Рассчитать" onclick="showSum()"><br>
