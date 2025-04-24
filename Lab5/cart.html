@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="ru">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Шельмин Артём Евгеньевич. Лабораторная работа 4</title>
+        <link rel="stylesheet" href="../main.css">
+        <link rel="shortcut" href="../favicon.ico" type="image/x-icon">
+        <link rel="icon" href="../favicon-32x32.png">
+        <link rel="icon" href="../favicon-48x48.png">
+        <script>
+            function showSum(){
+                let input1 = document.getElementById('number1');
+                let input2 = document.getElementById('number2');
+                let input3 = document.getElementById('number3');
+                let input4 = document.getElementById('number4');
+                let output = document.getElementById('output');
+
+                let apples = parseInt(input1.value);
+                let mangoes = parseInt(input2.value);
+                let oranges = parseInt(input3.value);
+                let pineapples = parseInt(input4.value);
+
+                let x = 60;
+                let y = 45;
+                let z = 130;
+                let f = 280;
+
+                if (apples < 0) {
+                    alert("Количество не может быть меньше 0");
+                    return;
+                }
+                if (mangoes < 0) {
+                    alert("Количество не может быть меньше 0");
+                    return;
+                }
+                if (oranges < 0) {
+                    alert("Количество не может быть меньше 0");
+                    return;
+                }
+                if (pineapples < 0) {
+                    alert("Количество не может быть меньше 0");
+                    return;
+                }
+
+                if (isNaN(apples)) {
+                    alert("Введите количество яблок");
+                    input1.style.borderColor = 'red';
+                    return;
+                }
+
+                if (isNaN(mangoes)) {
+                    alert("Введите количество манго");
+                    input2.style.borderColor = 'red';
+                    return;
+                }
+
+                if (isNaN(oranges)) {
+                    alert("Введите количество апельсинов");
+                    input3.style.borderColor = 'red';
+                    return;
+                }
+
+                if (isNaN(pineapples)) {
+                    alert("Введите количество ананасов");
+                    input4.style.borderColor = 'red';
+                    return;
+                }
+                
+                let sum = apples * x + mangoes * y + oranges * z + pineapples * f;
+                output.innerHTML = 'Общая сумма: ' + sum;
+            }
+            function clearCart() {
+                document.getElementById("number1").value = "";
+                document.getElementById("number2").value = "";
+                document.getElementById("number3").value = "";
+                document.getElementById("number4").value = "";
+                document.getElementById("output").textContent = 'Общая цена:';
+            }
+        </script>
+        <style>
+            div {
+                cursor: pointer;
+                display: inline-block;
+                width: 400px;
+                border: 3px solid;
+                border-radius: 20px;
+                padding: 15px;
+                margin: 10px;
+                background-color: rgba(196, 175, 135, 0.322);
+                text-align: center;
+            }
+            .product {
+                width: 300px;
+            }
+            #output{
+                width: 200px;
+            }
+        </style>
+    </head>
+    <body>
+        <header>
+            НГТУ, ФБ, Лабораторная 4 
+            <hr>   
+        </header>
+        <main style="text-align: center">
+            <div>
+                <h1>Корзина товаров</h1>
+                <div class="product">
+                    Яблоки (60р/шт):<br>
+                    <input type="number" min="0" value=""  placeholder="Сколько яблок вам нужно?" id="number1"><br>
+                </div>
+    
+                <div class="product">
+                    Манго (45р/шт):<br>
+                    <input type="number" min="0" value="" placeholder="Сколько манго вам нужно?" id="number2"><br>
+                </div>
+                
+                <div class="product">
+                    Апельсины (130р/шт):<br>
+                    <input type="number" min="0" value="" placeholder="Сколько апельсинов вам нужно?" id="number3"><br>
+                </div>
+                
+                <div class="product">
+                    Ананасы (280р/шт):<br>
+                    <input type="number" min="0" value="" placeholder="Сколько ананасов вам нужно?" id="number4"><br>
+                </div>
+    
+                <input type="button" value="Рассчитать" onclick="showSum()"><br>
+                <div id="output">Общая цена:</div><br>
+                <input type="button" value="Очистить" onclick="clearCart()">
+            </div>
+        </main>
+        
+        <footer>
+            <hr>
+            &copy; Шельмин Артём, ФБИ-31, 2 курс, 2025 
+        </footer>
+    </body>
+</html>
