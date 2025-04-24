@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="ru">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Шельмин Артём Евгеньевич. Лабораторная работа 4</title>
+        <link rel="stylesheet" href="../main.css">
+        <link rel="shortcut" href="../favicon.ico" type="image/x-icon">
+        <link rel="icon" href="../favicon-32x32.png">
+        <link rel="icon" href="../favicon-48x48.png">
+        <script>
+            function dopFilter(event) {
+                let x = this.event.x;
+                let image = document.getElementById('blurImage');
+
+                if (event.ctrlKey) {
+                    filterValue = (x / image.offsetWidth) * 100;
+                    filterName = 'sepia';
+                    image.style.filter = 'sepia(' + filterValue + '%)';
+                } 
+                else if (event.altKey) {
+                    filterValue = (x / image.offsetWidth) * 100;
+                    filterName = 'grayscale';
+                    image.style.filter = 'grayscale(' + filterValue + '%)';
+                } 
+                else if (event.shiftKey) {
+                    filterValue = (x / image.offsetWidth) * 360;
+                    filterName = 'hue-rotate';
+                    image.style.filter = 'hue-rotate(' + filterValue + 'deg)';
+                } 
+                else {
+                    filterValue = (x / image.offsetWidth) * 20;
+                    filterName = 'blur';
+                    image.style.filter = 'blur(' + filterValue + 'px)';
+                }
+                document.getElementById('filterName').innerText = 'Фильтр: ' + filterName;
+                document.getElementById('filterValue').innerText = 'Значение: ' + filterValue.toFixed(2) 
+            }
+        </script>
+        <style>
+            .img{
+                height: 40%;
+                width: 70%; 
+            }
+        </style>
+    </head>
+    <body>
+        <header>
+            НГТУ, ФБ, Лабораторная 4 
+            <hr>   
+        </header>
+        <main>
+            <div>При перемещение курсова эффект фильтра будет изменяться.</div>
+            <div>Лево - уменьшение</div>
+            <div>Право - увеличение</div>
+            <div>Также нажимайте клавиши Ctrl, Alt, Shift для использования других фильтров.</div>
+            <div id="filterName">Фильтр: blur</div>
+            <div id="filterValue">Значение: 0px</div>
+            <div><img src="scrin.jpg" id="blurImage" class="img" onmousemove="dopFilter(event)"></div>
+            <div id="filterInfo" class="info">
+        </main>
+        
+        <footer>
+            <hr>
+            &copy; Шельмин Артём, ФБИ-31, 2 курс, 2025 
+        </footer>
+    </body>
+</html>
