@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ru">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Шельмин Артём Евгеньевич. Лабораторная работа 4</title>
+        <link rel="stylesheet" href="../main.css">
+        <link rel="shortcut" href="../favicon.ico" type="image/x-icon">
+        <link rel="icon" href="../favicon-32x32.png">
+        <link rel="icon" href="../favicon-48x48.png">
+        <script>
+            function blurChange() {
+                let value = document.getElementById('blurValue').value + 'px';
+                document.getElementById('blurOutput').innerText = value;
+                document.getElementById('blurImage').style.filter = 'blur(' + value + ')';
+            }
+        </script>
+        <style>
+            .img{
+                height: 40%;
+                width: 70%;
+            }
+        </style>
+    </head>
+    <body>
+        <header>
+            НГТУ, ФБ, Лабораторная 4 
+            <hr>   
+        </header>
+        <main>
+            <div>
+                Фильтр blur:
+                <input type="range" min="0" max="20" value="0" onchange="blurChange()" id="blurValue">
+                <span id="blurOutput"></span>
+            </div>
+            <div><img src="scrin.jpg" id="blurImage" class="img"></div>
+        </main>
+        
+        <footer>
+            <hr>
+            &copy; Шельмин Артём, ФБИ-31, 2 курс, 2025 
+        </footer>
+    </body>
+</html>
