@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="ru">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Шельмин Артём Евгеньевич. Лабораторные работы по WEB-программированию</title>
+        <link rel="stylesheet" href="../main.css">
+        <link rel="shortcut" href="../favicon.ico" type="image/x-icon">
+        <link rel="icon" href="../favicon-32x32.png">
+        <link rel="icon" href="../favicon-48x48.png">
+        <script>
+            function showDate(){
+                let out1 = document.getElementById('current-date1');
+                let out2 = document.getElementById('current-date2');
+                let out3 = document.getElementById('current-date3');
+                let out4 = document.getElementById('current-date4');
+                let out5 = document.getElementById('current-date5');
+                let out6 = document.getElementById('current-date6');
+                let today = new Date ();
+                out1.innerHTML = 'Дата и время для Русской локали: ' + today.toLocaleString('ru-RU');
+                out2.innerHTML = 'Дата и время для Корейской локали: ' + today.toLocaleString('ko-KO');
+                out3.innerHTML = 'Дата и время для Казахской локали: ' + today.toLocaleString('kk-KK');
+                out4.innerHTML = 'Дата и время для Тайской локали: ' + today.toLocaleString('th-TH');
+                out5.innerHTML = 'Дата и время для Японской локали: ' + today.toLocaleString('ja-JA');
+                out6.innerHTML = 'Дата и время для Китайской локали: ' + today.toLocaleString('zh-ZH');
+            }
+            function changeColors(){
+                const header = document.getElementsByTagName('header')[0];
+                const rgb = `rgb(${Math.random() * 255}, ${Math.random() * 255}, ${Math.random() * 255})`;
+                header.style.color = rgb;
+            }
+
+            let timerNum;
+
+            function startChangeColors(){
+                timerNum = setInterval(changeColors, 1000);
+                document.getElementById('start-btn').disabled = true;
+                document.getElementById('stop-btn').disabled = false;
+            }
+
+            function stopChangeColors(){
+                clearInterval(timerNum);
+                document.getElementById('start-btn').disabled = false;
+                document.getElementById('stop-btn').disabled = true;
+            }
+
+            let timeUpdateInterval;
+
+            function startUpdateTime() {
+                showDate();
+                timeUpdateInterval = setInterval(showDate, 1000);
+                document.getElementById('start-time-btn').disabled = true;
+                document.getElementById('stop-time-btn').disabled = false;
+            }
+
+            function stopUpdateTime() {
+                clearInterval(timeUpdateInterval);
+                document.getElementById('start-time-btn').disabled = false;
+                document.getElementById('stop-time-btn').disabled = true;
+            }
+        </script>
+        <style>
+        header {
+            transition: color 2s;
+        }
+        #current-date1 {
+            margin: 8px 0;
+            padding: 8px;
+            background-color: #ecf0f1;
+            border-radius: 4px;
+        }
+
+        #current-date2 {
+            margin: 8px 0;
+            padding: 8px;
+            background-color: #ecf0f1;
+            border-radius: 4px;
+        }
+
+        #current-date3 {
+            margin: 8px 0;
+            padding: 8px;
+            background-color: #ecf0f1;
+            border-radius: 4px;
+        }
+
+        #current-date4 {
+            margin: 8px 0;
+            padding: 8px;
+            background-color: #ecf0f1;
+            border-radius: 4px;
+        }
+
+        #current-date5 {
+            margin: 8px 0;
+            padding: 8px;
+            background-color: #ecf0f1;
+            border-radius: 4px;
+        }
+
+        #current-date6 {
+            margin: 8px 0;
+            padding: 8px;
+            background-color: #ecf0f1;
+            border-radius: 4px;
+        }
+
+        button {
+            background-color: #3498db;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            margin: 8px 8px 8px 0;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #2980b9;
+        }
+
+        button:disabled {
+            background-color: #95a5a6;
+            cursor: not-allowed;
+        }
+
+        div {
+            margin: 16px 0;
+        }
+    </style>
+    </head>
+    <body onload="showDate()">
+        <header>
+            НГТУ, ФБ, Лабораторная 6
+            <hr>   
+        </header>
+
+        <main>
+            <div id="current-date1"></div>
+            <div id="current-date2"></div>
+            <div id="current-date3"></div>
+            <div id="current-date4"></div>
+            <div id="current-date5"></div>
+            <div id="current-date6"></div>
+            <div>
+                <button onclick="startChangeColors()" id= "start-btn">Старт</button>
+                <button onclick="stopChangeColors()" id="stop-btn" disabled>Стоп</button>
+            </div>
+            <div>
+                <button onclick="startUpdateTime()" id="start-time-btn">Обновление времени</button>
+                <button onclick="stopUpdateTime()" disabled id="stop-time-btn">Остановить обновление времени</button>
+            </div>
+        </main>
+
+        <footer>
+            <hr>
+            &copy; Шельмин Артём, ФБИ-31, 2 курс, 2025 
+        </footer>
+    </body>
+</html>
