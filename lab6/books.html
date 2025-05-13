@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="ru">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Шельмин Артём Евгеньевич. Лабораторные работы по WEB-программированию</title>
+        <link rel="stylesheet" href="../main.css">
+        <link rel="shortcut" href="../favicon.ico" type="image/x-icon">
+        <link rel="icon" href="../favicon-32x32.png">
+        <link rel="icon" href="../favicon-48x48.png">
+        <script src="books.js"></script>
+        <script>
+            function showBooks() {
+                const bookList = document.getElementById('bookList');
+
+                for (let i = 0; i < books.length; i++) {
+                    let style = "";
+                    let info = "";
+                    let bestseller = "";
+
+                    if (books[i].dostup) {
+                        style += "opacity: 0.5;"; 
+                        info += "<div class='nal'>Данная книга отсутствует в наличии!</div>";
+                    }
+
+                    if (books[i].bestseller) {
+                        bestseller = "<sup class='verh'>бестселлер!</sup>";
+                    }
+
+                    bookList.innerHTML += `
+                        <div style="${style}" class="block">
+                            <b>${books[i].author}</b> ${bestseller}<br>
+                            <i>${books[i].name}</i> — ${books[i].year}<br>
+                            Цена: <b>${books[i].price}</b>
+                            ${info}
+                        </div>
+                    `;
+                }
+            }
+        </script>
+    
+        <style>
+            .block {
+                background-color: #f9f9f9;
+                border: 1px solid black;
+                border-radius: 5px;
+                padding: 15px;
+                margin-bottom: 15px;
+                box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            }
+
+            .nal {
+                color: #d9534f;
+                font-weight: bold;
+                margin-top: 8px;
+                font-style: italic;
+            }
+
+            .verh {
+                color: #ff7300;
+                font-size: 0.8em;
+                text-transform: uppercase;
+                font-weight: bold;
+            }
+
+            .block1 {
+                max-width: 800px;
+                margin: 0 auto;
+                padding: 20px;
+            }
+
+            h1 {
+                color: #333;
+                text-align: center;
+                margin-bottom: 30px;
+            }
+
+            b {
+                color: #337ab7;
+            }
+
+            i {
+                color: #5cb85c;
+            }
+    </style>
+    </head>
+    <body onload="showBooks()">
+        <header>
+            НГТУ, ФБ, Лабораторная 6
+            <hr>   
+        </header>
+
+        <main>
+           <div class="block1">
+                <h1>Список книг</h1>
+                <div id="bookList"></div>
+            </div>
+        </main>
+
+        <footer>
+            <hr>
+            &copy; Шельмин Артём, ФБИ-31, 2 курс, 2025 
+        </footer>
+    </body>
+</html>
