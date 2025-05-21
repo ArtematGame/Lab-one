@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="ru">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Шельмин Артём Евгеньевич. Курс армянского драма</title>
+        <link rel="stylesheet" href="main1.css">
+        <link rel="shortcut" href="Изображения/deli.ico" type="image/x-icon">
+        <link rel="icon" href="Изображения/deli-32x32.png">
+        <link rel="icon" href="Изображения/deli-48x48.png">
+        <style>
+            .box { 
+                background: #f5f5f5; 
+                padding: 20px; 
+                border-radius: 8px; 
+                margin: 0 15px 25px 165px;
+                margin-right: 15px;
+                box-sizing: border-box;
+                padding-bottom: 30px;
+            }
+            input { 
+                padding: 10px; 
+                margin: 8px 5px; 
+                border: 1px solid #ddd;
+                border-radius: 4px;
+                font-size: 16px;
+                width: 150px;
+            }
+            .kurs {
+                font-size: 18px;
+                margin: 15px 0;
+                font-weight: bold;
+            }
+            .diag-container {
+                width: 100%;
+                overflow-x: auto;
+                margin: 20px 0;
+            }
+            .diag {
+                display: flex;
+                align-items: flex-end;
+                height: 300px;
+                gap: 4px;
+                min-width: 800px;
+                padding-bottom: 20px;
+                border-bottom: 1px solid #ddd;
+            }
+            .bar {
+                background: #13b48c;
+                flex: 1;
+                transition: all 0.3s;
+                cursor: pointer;
+                min-width: 10px;
+                border-radius: 3px 3px 0 0;
+            }
+            .bar:hover {
+                background: #a19d9d;
+                opacity: 0.9;
+            }
+            #info {
+                font-size: 16px;
+                margin-top: 15px;
+                padding: 10px;
+                background: #f0f0f0;
+                border-radius: 4px;
+            }
+            h1, h2 {
+                color: #333;
+                margin-bottom: 15px;
+            }
+            .converter {
+                display: flex;
+                align-items: center;
+                margin: 15px 0;
+                flex-wrap: wrap;
+            }
+        </style>
+    </head>
+    <body>
+        <header>
+            НГТУ, ФБ, РГЗ
+            <hr>   
+        </header>
+
+        <main>
+            <div class="menu">
+                <img src="Изображения/logodeli.png" style="width: 150px; height: 70px;" >
+                <div>
+                    <ul>
+                        <li><a href="top.html">О нас</a></li>
+                        <li><a href="news.html">Новости</a></li>
+                        <li><a href="curs.html">Конвертор валюты</a></li>
+                        <li><a href="kontakt.html">Контакты</a></li>
+                        <li><a href="Video.html">Видео</a></li>
+                    </ul>
+                </div>
+            </div>
+            <a href="#" class="back"><span>&#11014;</span></a>
+    
+            <div class="box">
+                <h1>Курс армянского драма (AMD)</h1>
+                <div class="str">
+                    <div class="kurs" id="amd">Загрузка курса...</div>
+                    <div class="converter">
+                        <input class="rub" type="number" placeholder="Рубли (RUB)" id="rub" />
+                        <span style="font-size: 20px; margin: 0 5px;">⭢</span>
+                        <input class="amd" type="number" placeholder="Драмы (AMD)" id="AMD" />
+                    </div>
+                </div>
+            </div>
+
+            <div class="box">
+                <h2>Динамика курса AMD за последний месяц</h2>
+                <div class="diag-container">
+                    <div class="diag" id="diag"></div>
+                </div>
+                <div class="vivod" id="info">Кликните на столбец для просмотра деталей</div>
+            </div>
+        
+            <script>
+                let amd;
+
+                function getCurrency() {
+                    fetch('https://www.cbr-xml-daily.ru/daily_json.js')
+                        .then(function(response) {
+                            return response.json();
+                        })
+                        .then(function(data) {
+                            amd = data.Valute.AMD.Value;
+                            document.getElementById('amd').textContent = '1 AMD = ' + amd.toFixed(4) + ' RUB';
+                            showDiag();
+                        })
+                }
+
+                window.onload = function() {
+                    getCurrency();
+
+                    document.getElementById('rub').oninput = function() {
+                        if(amd) {
+                            document.getElementById('AMD').value = (this.value / amd).toFixed(2);
+                        }
+                    };
+                    
+                    document.getElementById('AMD').oninput = function() {
+                        if(amd) {
+                            document.getElementById('rub').value = (this.value * amd).toFixed(2);
+                        }
+                    };
+                };
+
+                function showDiag() {
+                    let diag = document.getElementById('diag');
+                    diag.innerHTML = "";
+                    let totalDays = 30;
+                    
+                    // Найдем минимальное и максимальное значение для масштабирования
+                    let minRate = amd * 0.9;
+                    let maxRate = amd * 1.1;
+                    
+                    for (let i = 0; i < totalDays; i++) {
+                        // Генерируем случайное значение в пределах ±10% от текущего курса
+                        let value = amd * (0.9 + Math.random() * 0.2);
+                        if(value < minRate) minRate = value;
+                        if(value > maxRate) maxRate = value;
+                        
+                        let bar = document.createElement('div');
+                        bar.className = 'bar';
+                        bar.title = 'Курс: ' + value.toFixed(4) + ' RUB';
+                        let days = totalDays - 1 - i;
+                        bar.dataset.days = days;
+                        bar.dataset.value = value;
+                        
+                        bar.onclick = function() {
+                            let bars = document.querySelectorAll('.bar');
+                            for (let j = 0; j < bars.length; j++) {
+                                bars[j].style.background = '#13b48c';
+                            }
+                            this.style.background = '#a19d9d';
+                            let date = new Date(Date.now() - days * 24 * 60 * 60 * 1000);
+                            let dateStr = date.toLocaleDateString('ru-RU');
+                            document.getElementById('info').innerHTML = `
+                                <strong>${dateStr}</strong><br>
+                                1 AMD = ${value.toFixed(4)} RUB<br>
+                                1 RUB = ${(1/value).toFixed(6)} AMD
+                            `;
+                        };
+                        diag.appendChild(bar);
+                    }
+                    
+                    // Масштабируем высоту столбцов
+                    let bars = document.querySelectorAll('.bar');
+                    let range = maxRate - minRate;
+                    bars.forEach(bar => {
+                        let value = parseFloat(bar.dataset.value);
+                        let heightPercent = ((value - minRate) / range) * 80 + 10; // 10-90% высоты
+                        bar.style.height = heightPercent + '%';
+                    });
+                }
+            </script>
+        </main>
+
+        <footer>
+            <hr>
+            &copy; Шельмин Артём, ФБИ-31, 2 курс, 2025 
+        </footer>
+    </body>
+</html>
