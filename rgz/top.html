@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="ru">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Шельмин Артём Евгеньевич. Лабораторные работы по WEB-программированию</title>
+        <link rel="stylesheet" href="main1.css">
+        <link rel="shortcut" href="Изображения/deli.ico" type="image/x-icon">
+        <link rel="icon" href="Изображения/deli-32x32.png">
+        <link rel="icon" href="Изображения/deli-48x48.png">
+        <style>
+            .back {
+                position: fixed;
+                bottom: 30px;
+                right: 30px;
+                width: 50px;
+                height: 50px;
+                background-color: #15e6b1;
+                color: #fff;
+                border-radius: 50%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-size: 24px;
+                text-decoration: none;
+                box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+                transition: 0.3s;
+                z-index: 1;
+            }
+            .back:hover {
+                background-color: #523636;
+                transform: scale(1.1);
+            }
+            .container {
+                max-width: 1200px;
+                margin: 0 auto;
+                padding: 20px;
+            }
+            .quote {
+                background-color: #f8f9fa;
+                padding: 10px;
+                
+                font-style: italic;
+            }
+            .founders {
+                display: flex;
+                justify-content: space-around;
+                flex-wrap: wrap;
+                margin: 30px 0;
+            }
+            .founder {
+                text-align: center;
+                margin: 15px;
+                width: 200px;
+            }
+            .founder img {
+                width: 150px;
+                height: 150px;
+                border-radius: 50%;
+                object-fit: cover;
+                margin-bottom: 10px;
+            }
+            .history {
+                margin: 40px 0;
+            }
+            .history-item {
+                margin-bottom: 25px;
+                padding-left: 20px;
+                border-left: 3px solid #15e6b1;
+            }
+            .history-year {
+                font-weight: bold;
+                color: #15e6b1;
+                font-size: 25px;
+                text-shadow: 2px 2px 2px rgba(36, 32, 32, 0.089);
+                margin-bottom: 5px;
+            }
+            .history-text {
+                margin: 0;
+            }
+            .services {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: space-between;
+            }
+            .service {
+                width: 30%;
+                margin-bottom: 30px;
+                padding: 20px;
+                box-shadow: 0 0 10px rgba(0,0,0,0.1);
+                border-radius: 5px;
+            }
+            .service img {
+                width: 100%;
+                height: 150px;
+                object-fit: cover;
+                border-radius: 5px;
+                margin-bottom: 15px;
+            }
+        </style>
+    </head>
+    <body>
+        <header>
+            НГТУ, ФБ, РГЗ
+            <hr>   
+        </header>
+
+        <main>
+            <div class="menu">
+                <img src="Изображения/logodeli.png" style="width: 150px; height: 70px;" >
+                <div>
+                    <ul>
+                        <li><a href="top.html">О нас</a></li>
+                        <li><a href="news.html">Новости</a></li>
+                        <li><a href="curs.html">Конвертор валюты</a></li>
+                        <li><a href="kontakt.html">Контакты</a></li>
+                        <li><a href="Video.html">Видео</a></li>
+                    </ul>
+                </div>
+            </div>
+            <a href="#" class="back"><span>&#11014;</span></a>
+           <div class="container">
+                <div id="about">
+                    <h1>Кто мы</h1>
+                    <p><b>Делимобиль</b> - это первый и крупнейший в России сервис каршеринга, который позволяет арендовать автомобиль на минуты. Наша миссия - сделать передвижение по городу максимально удобным и доступным для каждого.</p>
+                    
+                    <div class="quote">
+                        <p>"Мы верим, что будущее городской мобильности - за разумным использованием ресурсов и совместным потреблением."</p>
+                    </div>
+                    
+                    <p>Компания была основана в <u>2015 году</u> и с тех пор неустанно растёт и развивается, предлагая клиентам инновационные решения для городского транспорта.</p>
+                    
+                    <img src="Изображения/topdeli.jpg">
+                </div>
+
+                <div id="founders">
+                    <h2>Основатели</h2>
+                    <p>Делимобиль был создан командой энтузиастов, которые хотели изменить подход к городской мобильности:</p>
+                    
+                    <div class="founders">
+                        <div class="founder">
+                            <img src="Изображения/Vinc.png">
+                            <h3>Винченцо Трани</h3>
+                            <p>Основатель</p>
+                        </div>
+                        <div class="founder">
+                            <img src="Изображения/Elena.jpg">
+                            <h3>Елена Бехтина</h3>
+                            <p>Генеральный директор</p>
+                        </div>
+                        <div class="founder">
+                            <img src="Изображения/Mihail.png">
+                            <h3>Михаил Лойко</h3>
+                            <p>Финансовый директор</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="history">
+                    <h2>Наша история</h2>
+                    
+                    <div class="history-item">
+                        <div class="history-year">2015 год</div>
+                        <p class="history-text">Основание компании – Delimobil начал работу как каршеринговый сервис в России.</p>
+                    </div>
+                    
+                    <div class="history-item">
+                        <div class="history-year">2016 год</div>
+                        <p class="history-text">Развитие сервиса – расширение парка автомобилей и зоны покрытия в Москве.</p>
+                    </div>
+                    
+                    <div class="history-item">
+                        <div class="history-year">2017 год</div>
+                        <p class="history-text">Экспансия в регионы – запуск услуг в Санкт-Петербурге и других крупных городах России.</p>
+                    </div>
+                    
+                    <div class="history-item">
+                        <div class="history-year">2018 год</div>
+                        <p class="history-text">Рост парка до 10 000 автомобилей и внедрение новых технологических решений.</p>
+                    </div>
+                    
+                    <div class="history-item">
+                        <div class="history-year">2019 год</div>
+                        <p class="history-text">Выход на международный уровень – запуск сервиса в Казахстане.</p>
+                    </div>
+                    
+                    <div class="history-item">
+                        <div class="history-year">2020 год</div>
+                        <p class="history-text">Адаптация к пандемии – усиление мер санитарной обработки и рост выручки.</p>
+                    </div>
+                    
+                    <div class="history-item">
+                        <div class="history-year">2021 год</div>
+                        <p class="history-text">IPO на Московской бирже и рекордный парк – более 20 000 автомобилей.</p>
+                    </div>
+                    
+                    <div class="history-item">
+                        <div class="history-year">2022 год</div>
+                        <p class="history-text">Развитие подписки и внедрение ИИ для прогнозирования спроса.</p>
+                    </div>
+                    
+                    <div class="history-item">
+                        <div class="history-year">2023 год</div>
+                        <p class="history-text">Экспансия в новые города и добавление электромобилей в парк.</p>
+                    </div>
+                    
+                    <div class="history-item">
+                        <div class="history-year">2024 год</div>
+                        <p class="history-text">Улучшение клиентского опыта и рост финансовой устойчивости.</p>
+                    </div>
+                </div>
+
+                <div id="services">
+                    <h2>Направления деятельности</h2>
+                    
+                    <div class="services">
+                        <div class="service">
+                            <img src="Изображения/shot1.png">
+                            <h3>Краткосрочная аренда</h3>
+                            <p>Аренда автомобилей по минутам для поездок по городу с возможностью бесплатной парковки.</p>
+                        </div>
+                        <div class="service">
+                            <img src="Изображения/shot2.png">
+                            <h3>Корпоративные решения</h3>
+                            <p>Специальные условия для бизнеса и корпоративных клиентов.</p>            
+                        </div>
+                        <div class="service">
+                            <img src="Изображения/shot3.jpeg">
+                            <h3>Экологичная мобильность</h3>
+                            <p>Развитие направления электромобилей и гибридных автомобилей.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="achievements">
+                <h2>Наши достижения</h2>
+                
+                <p>За годы работы Delimobil стал лидером рынка каршеринга, получив множество наград и признаний:</p>
+                <ul>
+                    <li><b>Лучший каршеринг России</b> по версии "Авторевю" (2018, 2020, 2022, 2023)</li>
+                    <li>Премия <b>"Инновации в транспорте"</b> за AI-алгоритмы прогнозирования спроса (2019, 2022)</li>
+                    <li>Награда <u>"Зелёный бизнес"</u> за вклад в экологию и электромобильный парк (2021, 2023)</li>
+                    <li><b>Лидер рынка</b> по количеству автомобилей (25,000+) и пользователей (5 млн+) (2023)</li>
+                    <li>Премия <b>"Цифровые технологии"</b> за мобильное приложение (2020, 2021)</li>
+                    <li>Топ-3 в рейтинге <u>Forbes</u> "Самые перспективные стартапы России" (2021)</li>
+                    <li>Награда <b>"Клиентоориентированный сервис"</b> (Service Excellence Award, 2022)</li>
+                    <li>Рекордное IPO на Московской бирже среди ИТ-компаний (2021, $1.1 млрд капитализации)</li>
+                    <li>Включение в <u>ТОП-5</u> мировых каршеринговых сервисов по версии Frost & Sullivan (2023)</li>
+                </ul>
+            </div>
+        </main>
+
+        <footer>
+            <hr>
+            &copy; Шельмин Артём, ФБИ-31, 2 курс, 2025 
+        </footer>
+    </body>
+</html>
