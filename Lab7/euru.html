@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="ru">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Шельмин Артём Евгеньевич. Лабораторные работы по WEB-программированию</title>
+        <link rel="stylesheet" href="../main.css">
+        <link rel="shortcut" href="../favicon.ico" type="image/x-icon">
+        <link rel="icon" href="../favicon-32x32.png">
+        <link rel="icon" href="../favicon-48x48.png">
+        <script>
+            function getEuroExchangeRate(){
+                const url = 'https://www.cbr-xml-daily.ru/daily_json.js';
+                fetch(url)
+                    .then(function(response) {
+                        return response.json();
+                    })
+                    .then(function(json) {
+                        let curs = json.Valute.EUR.Value;
+                        let previous = json.Valute.EUR.Previous;
+                        let raznica = curs - previous;
+                        let link = document.getElementById("link");
+                        let date = json.Date;
+                        let data = date.slice(0,10);
+                        document.getElementById("curs").innerHTML = "Курс на текущую дату: " + curs;
+                        document.getElementById("previous").innerHTML = "Курс на прошлую дату: " + previous;
+                        document.getElementById("date").innerHTML = "Дата: " + data;
+                        
+                        if (raznica > 0) {
+                            document.getElementById("raznica").innerHTML = "Разница между текущим курсом и предыдущим: " + raznica.toFixed(2) + " - Курс вырос";
+                        }
+                        else {
+                            document.getElementById("raznica").innerHTML = "Разница между текущим курсом и предыдущим: " + raznica.toFixed(2) + " - Курс упал";
+                        }
+
+                        link.style.display = "block";
+                    });
+            }
+        </script>
+        <style>
+            #link {
+                display: none;
+                padding: 10px;
+                background-color: #0e6892;
+                color: white;
+                border-radius: 4px;
+            }
+            #curs {
+                font-weight: bold;
+            }
+            #raznica {
+                font-weight: bold;
+            }
+            #date {
+                color: #7f8c8d;
+                font-style: italic;
+            }
+             button {
+                padding: 12px 20px;
+                background-color: #3498db;
+                color: white;
+                border: none;
+                border-radius: 6px;
+                cursor: pointer;
+                font-size: 16px;
+                font-weight: bold;
+                margin-bottom: 20px;
+                transition: all 0.3s ease;
+                box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            }
+
+            button:hover {
+                background-color: #2980b9;
+                transform: translateY(-2px);
+                box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+            }
+        </style>
+    </head>
+    <body>
+        <header>
+            НГТУ, ФБ, Лабораторная 7
+            <hr>   
+        </header>
+
+        <main>
+           <button onclick="getEuroExchangeRate()">Курс евро</button>
+            <div id="date"></div>
+            <div id="curs"></div>
+            <div id="previous"></div>
+            <div id="raznica"></div>
+            <a href = "https://www.cbr-xml-daily.ru" id ="link">Ссылка на сайт: </a>
+        </main>
+
+        <footer>
+            <hr>
+            &copy; Шельмин Артём, ФБИ-31, 2 курс, 2025 
+        </footer>
+    </body>
+</html>
