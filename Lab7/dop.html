@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Шельмин Артём Евгеньевич. Лабораторные работы по WEB-программированию</title>
+    <link rel="stylesheet" href="../main.css">
+    <link rel="shortcut" href="../favicon.ico" type="image/x-icon">
+    <link rel="icon" href="../favicon-32x32.png">
+    <link rel="icon" href="../favicon-48x48.png">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<script>
+    function getWeatherData() {
+        let url = `https://api.open-meteo.com/v1/forecast?latitude=55.7558&longitude=37.6173&hourly=temperature_2m,relative_humidity_2m&current_weather=true`;
+        
+        fetch(url)
+            .then(function(response) {
+                return response.json();
+            })
+            .then(function(json) {
+                let currentTemp = json.current_weather.temperature;
+                let currentHumidity = json.hourly.relative_humidity_2m[0];
+
+                let times = json.hourly.time.slice(0, 24).map(function(time) {
+                    return time.split('T')[1];
+                });
+                let temps = json.hourly.temperature_2m.slice(0, 24);
+                let humids = json.hourly.relative_humidity_2m.slice(0, 24);
+
+                document.getElementById("tekushayaTemperatura").innerHTML = "Текущая температура: " + currentTemp + "°C";
+                document.getElementById("tekushayaVlazhnost").innerHTML = "Текущая влажность: " + currentHumidity + "%";
+
+                createChart("grafTemperatury", "Температура (°C)", temps, "rgba(255, 99, 132, 0.7)", times);
+                createChart("grafVlazhnosti", "Влажность (%)", humids, "rgba(54, 162, 235, 0.7)", times);
+            })
+    }
+    
+    function createChart(canvasId, label, data, bgColor, labels) {
+        let ctx = document.getElementById(canvasId);
+        
+        new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: labels,
+                datasets: [{
+                    label: label,
+                    data: data,
+                    backgroundColor: bgColor,
+                    borderColor: bgColor.replace('0.7', '1'),
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    tooltip: {
+                        enabled: false
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: false,
+                        title: {
+                            display: true,
+                            text: label
+                        }
+                    },
+                    x: {
+                        title: {
+                            display: true,
+                            text: 'Время'
+                        }
+                    }
+                }
+            }
+        });
+    }
+    
+    window.onload = getWeatherData;
+</script>
+<style>
+    .tekushieDannye {
+        background: #f0f8ff;
+        padding: 15px;
+        border-radius: 10px;
+        margin-bottom: 20px;
+    }
+    .konteynerGrafika {
+        margin: 30px 0;
+        height: 300px;
+    }
+    h1, h2 {
+        color: #333;
+    }
+</style>
+<body>
+    <h1>Прогноз погоды</h1>
+    
+    <div class="tekushieDannye">
+        <h2>Текущие показатели</h2>
+        <div id="tekushayaTemperatura"></div>
+        <div id="tekushayaVlazhnost"></div>
+    </div>
+    
+    <h2>Температура за последние 24 часа</h2>
+    <div class="konteynerGrafika">
+        <canvas id="grafTemperatury"></canvas>
+    </div>
+    
+    <h2>Влажность за последние 24 часа</h2>
+    <div class="konteynerGrafika">
+        <canvas id="grafVlazhnosti"></canvas>
+    </div>
+    <footer>
+        <hr>
+        &copy; Шельмин Артём, ФБИ-31, 2 курс, 2025 
+    </footer>
+</body>
+</html>
