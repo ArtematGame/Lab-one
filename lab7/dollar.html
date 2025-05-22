@@ -10,32 +10,32 @@
         <ссылка относительно="значок" href="../значок-48x48.png">
         <Сценарий Src="dollar-date.js"></Сценарий>
         <Сценарий>
-             function showExchange() {
-                let table = document.getElementById('dollar-table');
+             функция showExchange() {
+                пусть table = document.getElementById('таблица в долларах');
                 для(пусть i = 0; i < Обмен.длина; Я++) {
                     пусть тр = документ.создатьЭлемент('тр');
-                    let td = document.createElement('td');
-                    td.innerText = exchange[i];
-                    tr.appendChild(td);
-                    table.appendChild(tr);
+                    пусть td = document.createElement('td');
+                    td.innerText = обмен[i];
+                    tr.Дочернее приложение (td);
+                    таблица.Дочернее приложение (tr);
                 }
 
-                let sum = 0;
-                for(let i = 0; i<Обмен.длина; Я++) {
+                пусть сумма = 0;
+                для(пусть i = 0; i<Обмен.длина; Я++) {
                     сумма += обмен[i];
                 }
                 пусть Средний = сумма / Обмен.длина;
-                average = average.toFixed(2);
+                среднее значение = average.toFixed(2);
                 
                 document.getElementById('detail').innerText = `Средний курс: ${average}`;
-                a= document.getElementById('button')
-                a.style.display="none";
+                a= document.getElementById(кнопка'')
+                a.style.display="нет";
             }
         </Сценарий>
         <Стиль>
-            button {
-                padding: 10px 15px;
-                background-color: #4CAF50;
+            кнопка {
+                отступ: 10px 15px;
+                цвет фона: #4CAF50;
                 color: white;
                 border: none;
                 border-radius: 4px;
