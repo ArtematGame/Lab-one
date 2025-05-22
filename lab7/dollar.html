@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="ru">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Шельмин Артём Евгеньевич. Лабораторные работы по WEB-программированию</title>
+        <link rel="stylesheet" href="../main.css">
+        <link rel="shortcut" href="../favicon.ico" type="image/x-icon">
+        <link rel="icon" href="../favicon-32x32.png">
+        <link rel="icon" href="../favicon-48x48.png">
+        <script src="dollar-date.js"></script>
+        <script>
+             function showExchange() {
+                let table = document.getElementById('dollar-table');
+                for(let i = 0; i < exchange.length; i++) {
+                    let tr = document.createElement('tr');
+                    let td = document.createElement('td');
+                    td.innerText = exchange[i];
+                    tr.appendChild(td);
+                    table.appendChild(tr);
+                }
+
+                let sum = 0;
+                for(let i = 0; i<exchange.length; i++) {
+                    sum += exchange[i];
+                }
+                let average = sum / exchange.length;
+                average = average.toFixed(2);
+                
+                document.getElementById('detail').innerText = `Средний курс: ${average}`;
+                a= document.getElementById('button')
+                a.style.display="none";
+            }
+        </script>
+        <style>
+            button {
+                padding: 10px 15px;
+                background-color: #4CAF50;
+                color: white;
+                border: none;
+                border-radius: 4px;
+                cursor: pointer;
+                font-size: 16px;
+                margin-bottom: 20px;
+                transition: background-color 0.3s;
+            }
+            button:hover {
+                background-color: #45a049;
+            }
+        </style>
+    </head>
+    <body>
+        <header>
+            НГТУ, ФБ, Лабораторная 7
+            <hr>   
+        </header>
+
+        <main>
+            <button onclick="showExchange()" id="button">Курс доллара</button>
+            <table border="1" id="dollar-table"></table>
+            <div id="detail"></div>
+        </main>
+
+        <footer>
+            <hr>
+            &copy; Шельмин Артём, ФБИ-31, 2 курс, 2025 
+        </footer>
+    </body>
+</html>
