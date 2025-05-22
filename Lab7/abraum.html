@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="ru">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Шельмин Артём Евгеньевич. Лабораторные работы по WEB-программированию</title>
+        <link rel="stylesheet" href="../main.css">
+        <link rel="shortcut" href="../favicon.ico" type="image/x-icon">
+        <link rel="icon" href="../favicon-32x32.png">
+        <link rel="icon" href="../favicon-48x48.png">
+        <script src="abraum-date.js"></script>
+        <script>
+            function showExchange() {
+                let table = document.getElementById('dollar-table');
+                 table.innerHTML =     
+                    `<tr>
+                        <td class='bord'><b>Дата</b></td>
+                        <td class='bord'><b>Цена</b></td>
+                        <td class='bord'><b>Разница</b></td>
+                    </tr>`
+                for(let i = 0; i < exchange.length; i++) {
+                    let price = exchange[i];
+                    let price1 = exchange[i-1];
+                    let raznica
+                    if (i>0) {
+                        raznica = price - price1;
+                    }
+                    let tr = document.createElement('tr');
+                    let tdExchange = document.createElement('td');
+                    let tdDate = document.createElement('td');
+                    let tdRaznica = document.createElement('td');
+                    tdExchange.innerText = exchange[i];
+                    tdDate.innerText = data[i];
+
+                    if (isNaN(raznica)){
+                        tdRaznica.innerText = "-"
+                    }
+                    else {
+                        tdRaznica.innerText = raznica.toFixed(3)
+                    }
+                    if (raznica>0) {
+                        tdRaznica.style.color = "green"
+                    }
+                    if (raznica<0) {
+                        tdRaznica.style.color = "red"
+                    }
+                    tr.appendChild(tdDate);
+                    tr.appendChild(tdExchange);
+                    tr.appendChild(tdRaznica);
+                    table.appendChild(tr);
+                    }
+
+                    let sum = 0;
+                    for(let i = 0; i<exchange.length; i++) {
+                        sum += exchange[i];
+                    }
+                    let average = sum / exchange.length;
+                    let min = Math.min(...exchange);
+                    let max = Math.max(...exchange);
+                    document.getElementById('max').innerText = `Максимальное: ${min.toFixed(4)}`;
+                    document.getElementById('min').innerText = `Минимальное: ${max.toFixed(4)}`;
+                    average = average.toFixed(2);
+                    
+                    document.getElementById('detail').innerText = `Средний курс: ${average}`;
+                }
+            
+        </script>
+        <style>
+            button {
+                padding: 10px 15px;
+                background-color: #4CAF50;
+                color: white;
+                border: none;
+                border-radius: 4px;
+                cursor: pointer;
+                font-size: 16px;
+                margin-bottom: 20px;
+                transition: background-color 0.3s;
+            }
+            button:hover {
+                background-color: #45a049;
+            }
+        </style>
+    </head>
+    <body>
+        <header>
+            НГТУ, ФБ, Лабораторная 7
+            <hr>   
+        </header>
+
+        <main>
+           <button onclick="showExchange()">Отобразить</button>
+            <table border="1" id="dollar-table"></table>
+            <div id="detail"></div>
+            <div id="max"></div>
+            <div id="min"></div>
+        </main>
+
+        <footer>
+            <hr>
+            &copy; Шельмин Артём, ФБИ-31, 2 курс, 2025 
+        </footer>
+    </body>
+</html>
