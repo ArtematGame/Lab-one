@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="ru">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Шельмин Артём Евгеньевич. Лабораторные работы по WEB-программированию</title>
+        <link rel="stylesheet" href="../main.css">
+        <link rel="shortcut" href="../favicon.ico" type="image/x-icon">
+        <link rel="icon" href="../favicon-32x32.png">
+        <link rel="icon" href="../favicon-48x48.png">
+        <script>
+            function getPogoda(){
+                const url = 'https://api.open-meteo.com/v1/forecast?latitude=55.0415&longitude=82.9346&hourly=temperature_2m&timezone=Asia%2FBangkok';
+                fetch(url)
+                    .then(function(response) {
+                        return response.json();
+                    })
+                    .then(function(json) {
+                        let pogoda8 = json.hourly.temperature_2m[8];
+                        let date8 = json.hourly.time[8];
+                        let data8 = date8.slice(0,10);
+                        let pogoda12 = json.hourly.temperature_2m[12];
+                        let date12 = json.hourly.time[12];
+                        let data12 = date12.slice(0,10);
+                        let pogoda20 = json.hourly.temperature_2m[20];
+                        let date20 = json.hourly.time[20];
+                        let data20 = date20.slice(0,10);
+                        document.getElementById("pogoda8").innerHTML = "☀️" + pogoda8 + "°C";
+                        document.getElementById("date8").innerHTML = "🗓️" + data8;
+                        document.getElementById("pogoda12").innerHTML = "☀️" + pogoda12 + "°C";
+                        document.getElementById("date12").innerHTML = "🗓️" + data12;
+                        document.getElementById("pogoda20").innerHTML = "☀️" + pogoda20 + "°C";
+                        document.getElementById("date20").innerHTML = "🗓️" + data20;
+                    })
+                    
+
+            }
+        </script>
+        <style>
+            button {
+                padding: 10px 15px;
+                background-color: #4CAF50;
+                color: white;
+                border: none;
+                border-radius: 4px;
+                cursor: pointer;
+                font-size: 16px;
+                margin-bottom: 20px;
+                transition: background-color 0.3s;
+            }
+            button:hover {
+                background-color: #45a049;
+            }
+            div {
+                margin: 10px 0;
+                padding: 8px;
+                font-size: 18px;
+                background-color: #f8f9fa;
+            }
+            #pogoda8, #pogoda12, #pogoda20 {
+                font-weight: bold;
+                color: #2c3e50;
+            }
+            #date8, #date12, #date20 {
+                color: #7f8c8d;
+                font-style: italic;
+            }
+        </style>
+    </head>
+    <body>
+        <header>
+            НГТУ, ФБ, Лабораторная 7
+            <hr>   
+        </header>
+
+        <main>
+            <button onclick="getPogoda()">Погода</button>
+            <div id="date8"></div>
+            <div id="pogoda8"></div>
+            <div id="date12"></div>
+            <div id="pogoda12"></div>
+            <div id="date20"></div>
+            <div id="pogoda20"></div>
+        </main>
+
+        <footer>
+            <hr>
+            &copy; Шельмин Артём, ФБИ-31, 2 курс, 2025 
+        </footer>
+    </body>
+</html>
