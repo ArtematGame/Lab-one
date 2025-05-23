@@ -29,14 +29,12 @@
                 let numberB = document.getElementById('numberB');
                 let numberC = document.getElementById('numberC');
                 
-                // Сброс стилей и сообщений об ошибках
                 error.innerText = '';
                 error2.innerText = '';
                 numberA.style.border = '';
                 numberB.style.border = '';
                 numberC.style.border = '';
                 
-                // Проверка на пустые поля
                 if(isNaN(umnna)) {
                     error2.innerText = 'Заполните первое поле!';
                     numberA.style.border = '2px solid red';
@@ -55,7 +53,6 @@
                     return;
                 }
                 
-                // Проверка диапазона
                 if(nacheslo > konec) {
                     error.innerText = '"Начать с: " не может быть больше чем "Закончить на: "!';
                     numberB.style.border = '2px solid red';
@@ -63,7 +60,6 @@
                     return;
                 }
                 
-                // Генерация таблицы умножения
                 tbl.innerHTML = '<h1>Таблица умножения</h1>';
                 for(let i = nacheslo; i <= konec; i++) {
                     let s = `<div>${i} * ${umnna} = ${i * umnna}</div>`;
