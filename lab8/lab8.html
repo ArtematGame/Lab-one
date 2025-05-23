@@ -52,7 +52,9 @@
                         <ul class="list-group">
                             <li v-for="(flower, id) in flowers" class="list-group-item">
                                 {{ flower }} <button @click="edit(id, flower)" class="btn btn-primary"><i class="bi bi-pen"></i></button>
+                                <button @click="removeFlower" class="btn btn-danger"><i class="bi bi-trash"></i></button>
                             </li>
+                        <button @click="addFlower" class="btn btn-success"><i class="bi bi-plus"></i></button>
                         </ul>
                     </div>
                 </div>
@@ -75,10 +77,15 @@
                             <button @click="edit(id, flower)" class="btn btn-primary" v-if="flower !== null">
                                 <i class="bi bi-pen"></i>
                             </button>
-                            <div class="spinner-grow text-primary" role="status" v-if="flower === null"></div>
+
+                            <button @click="removeFlower(id)" class="btn btn-danger" v-if="flower !== null">
+                                <i class="bi bi-trash"></i>
+                            </button>
+                            <div class="spinner-grow text-primary" role="status" v-if="flower === null"></div>                           
                         </td>
                     </tr>
                 </table>
+                <button @click="addFlower" class="btn btn-success"><i class="bi bi-plus">Добавить</i></button>
 
                 <h2>Калькулятор</h2>
                 <div class="row g-5">
@@ -137,6 +144,15 @@
                         setTimeout(() => {
                             this.flowers[id] = newName;
                         }, 3000);
+                    },
+                    removeFlower(id) {
+                        this.flowers.splice(id, 1);
+                    },
+                    addFlower() {
+                        const newFlower = prompt('Введите название нового цветка:');
+                        if (newFlower) {
+                            this.flowers.push(newFlower);
+                        }
                     },
                     sum() {
                         this.result = this.a + this.b;
