@@ -10,7 +10,7 @@
         <link rel="icon" href="../favicon-48x48.png">
         <script>
             function getPogoda(){
-                const url = 'https://api.open-meteo.com/v1/forecast?latitude=55.0415&longitude=82.9346&hourly=temperature_2m&timezone=Asia%2FBangkok';
+                const url = 'https://api.open-meteo.com/v1/forecast?latitude=55.0084&longitude=82.9357&hourly=temperature_2m,apparent_temperature&timezone=Asia%2FNovosibirsk';
                 fetch(url)
                     .then(function(response) {
                         return response.json();
@@ -32,8 +32,6 @@
                         document.getElementById("pogoda20").innerHTML = "☀️" + pogoda20 + "°C";
                         document.getElementById("date20").innerHTML = "🗓️" + data20;
                     })
-                    
-
             }
         </script>
         <style>
