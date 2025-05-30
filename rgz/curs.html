@@ -118,15 +118,22 @@
             </div>
         
             <script>
-                let amd;
+                const amdRates = [
+                    0.2031, 0.2025, 0.2028, 0.2032, 0.2035, 
+                    0.2038, 0.2040, 0.2042, 0.2045, 0.2043, 
+                    0.2041, 0.2039, 0.2037, 0.2035, 0.2033, 
+                    0.2031, 0.2029, 0.2027, 0.2025, 0.2023, 
+                    0.2024, 0.2026, 0.2028, 0.2030, 0.2032, 
+                    0.2034, 0.2036, 0.2038, 0.2040, 0.2043
+                ];
 
-                function getCurrency() {
+               function getCurrency() {
                     fetch('https://www.cbr-xml-daily.ru/daily_json.js')
                         .then(function(response) {
                             return response.json();
                         })
                         .then(function(data) {
-                            amd = data.Valute.AMD.Value;
+                            amd = data.Valute.AMD.Value / 100;
                             document.getElementById('amd').textContent = '1 AMD = ' + amd.toFixed(4) + ' RUB';
                             showDiag();
                         })
@@ -152,16 +159,11 @@
                     let diag = document.getElementById('diag');
                     diag.innerHTML = "";
                     let totalDays = 30;
-                    
-                    // Найдем минимальное и максимальное значение для масштабирования
-                    let minRate = amd * 0.9;
-                    let maxRate = amd * 1.1;
+                    let minRate = Math.min(...amdRates);
+                    let maxRate = Math.max(...amdRates);
                     
                     for (let i = 0; i < totalDays; i++) {
-                        // Генерируем случайное значение в пределах ±10% от текущего курса
-                        let value = amd * (0.9 + Math.random() * 0.2);
-                        if(value < minRate) minRate = value;
-                        if(value > maxRate) maxRate = value;
+                        let value = amdRates[i];
                         
                         let bar = document.createElement('div');
                         bar.className = 'bar';
@@ -181,18 +183,16 @@
                             document.getElementById('info').innerHTML = `
                                 <strong>${dateStr}</strong><br>
                                 1 AMD = ${value.toFixed(4)} RUB<br>
-                                1 RUB = ${(1/value).toFixed(6)} AMD
-                            `;
+                                1 RUB = ${(1/value).toFixed(6)} AMD`;
                         };
                         diag.appendChild(bar);
                     }
-                    
-                    // Масштабируем высоту столбцов
+
                     let bars = document.querySelectorAll('.bar');
                     let range = maxRate - minRate;
                     bars.forEach(bar => {
                         let value = parseFloat(bar.dataset.value);
-                        let heightPercent = ((value - minRate) / range) * 80 + 10; // 10-90% высоты
+                        let heightPercent = ((value - minRate) / range) * 80 + 10;
                         bar.style.height = heightPercent + '%';
                     });
                 }
